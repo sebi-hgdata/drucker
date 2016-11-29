@@ -1,6 +1,7 @@
 - include: playbooks/ssh-keys.yml
 - include: playbooks/apache.yml
 - include: playbooks/php.yml
+- include: playbooks/phpbrew.yml
 - include: playbooks/composer.yml
 - include: playbooks/phpmyadmin.yml
 - include: playbooks/adminer.yml

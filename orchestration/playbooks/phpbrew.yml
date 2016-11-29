@@ -1,0 +1,68 @@
+---
+- name: Check if phpbrew is installed
+  stat:
+    path: "{{ phpbrew_root }}"
+  register: phpbrew_homedir
+  ignore_errors: True
+
+- name: Install phpbrew globally
+  get_url:
+    url: "{{ phpbrew_download_link }}"
+    dest: "{{ phpbrew_binary }}"
+    force: yes
+    mode: 0755
+    validate_certs: no
+  register: phpbrew_get_url_result
+  until: "'OK' in phpbrew_get_url_result.msg"
+  retries: 3
+  delay: 10
+  when: phpbrew_homedir.stat.exists == false
+
+- name: Initialize phpbrew
+  command: "{{ phpbrew_binary }} init"
+  become: yes
+  become_user: "{{ user }}"
+  when: phpbrew_homedir.stat.exists == false
+
+- name: Load phpbrew bashrc settings
+  blockinfile:
+    dest: "{{ bashrc }}"
+    block: |
+      [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
+    state: present
+    marker: "# {mark} MANAGED PHPBREW BLOCK"
+  when: phpbrew_homedir.stat.exists == false
+
+- name: Fetch release list
+  command: "{{ phpbrew_binary }} known"
+  become: yes
+  become_user: "{{ user }}"
+  when: phpbrew_homedir.stat.exists == false
+
+- name: Temporary change Apache shared modules permissions
+  file:
+    path: "{{ item }}"
+    mode: 0777
+  with_items:
+    - "{{ apache_shared_modules }}"
+    - "{{ apache2_dir }}"
+  when: phpbrew_homedir.stat.exists == false
+
+- name: Install required phpbrew packages
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - libxml2-dev
+    - libbz2-dev
+    - libmcrypt-dev
+    - libreadline-dev
+    - libxslt1-dev
+  notify: Restart Apache
+  when: phpbrew_homedir.stat.exists == false
+
+- name: Build default PHP
+  command: "{{ phpbrew_binary }} install --no-patch {{ phpbrew_php_current_stable_release }} {{ phpbrew_php_build_arguments }}"
+  become: yes
+  become_user: "{{ user }}"
+  when: phpbrew_homedir.stat.exists == false

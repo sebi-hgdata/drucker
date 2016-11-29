@@ -42,32 +42,32 @@ _drucker_ ships with the following software stack:
 
 | Software            | Version         | Source |
 | --------------------|:---------------:|:--------:
-| Debian              | 8 (Jessie)      | [debian:latest](https://hub.docker.com/_/debian/)    |
-| Varnish             | 4.1.2 or later  | Custom build   |
-| nginx               | 1.10.1 or later | Custom build   |
-| Apache              | 2.4.10 or later | Custom build    |
-| Apache Solr         | 6.2.0 or later  | [geerlingguy.solr](https://galaxy.ansible.com/geerlingguy/solr/) (3.2.4) |
-| Java                | 8               | [williamyeh.oracle-java](https://galaxy.ansible.com/williamyeh/oracle-java/) (2.10.0)    |
-| PHP-FPM             | 7.0.13 or later | Custom build   |
-| APCu                | 5.1.7           | APT            |
-| Xdebug              | 2.5.0rc1        | Custom build   |
-| PECL uploadprogress | master          | Custom build   |
-| PECL YAML           | 2.0.0           | Custom build   |
-| LibYAML             | 0.1.7           | Custom build   |
-| Tideways Profiler   | 4.0.7           | Custom build   |
-| Coder               | 8.2.9           | Custom build   |
-| Code Sniffer        | 2.6.1           | Custom build   |
-| PHP-CS-Fixer        | 1.12.2          | Custom build   |
-| phpmd               | 2.5.0           | Custom build   |
-| phantomjs           | 2.1.1           | Custom build   |
-| MySQL               | 5.7.14 or later | Custom build   |
-| Drupal              | 8.3.x           | Custom build   |
-| Drush               | 8.1.7           | Custom build   |
-| Drupal Console      | 1.0.0-rc10      | Custom build   |
-| Composer            | 1.2.2           | Custom build   |
-| phpMyAdmin          | 4.6.5           | Custom build   |
-| adminer             | 4.2.5           | Custom build   |
-| bash-git-prompt     | 2.6.1           | Custom build   |
+| Debian              | 8 (Jessie)            | [debian:latest](https://hub.docker.com/_/debian/)    |
+| Varnish             | 4.1.2 or later        | Custom build   |
+| nginx               | 1.10.1 or later       | Custom build   |
+| Apache              | 2.4.10 or later       | Custom build    |
+| Apache Solr         | 6.2.0 or later        | [geerlingguy.solr](https://galaxy.ansible.com/geerlingguy/solr/) (3.2.4) |
+| Java                | 8                     | [williamyeh.oracle-java](https://galaxy.ansible.com/williamyeh/oracle-java/) (2.10.0)    |
+| PHP-FPM             | 7.0.13 (configurable) | Custom build via [phpbrew](https://github.com/phpbrew/phpbrew)   |
+| APCu                | 5.1.7                 | APT            |
+| Xdebug              | 2.5.0rc1              | Custom build   |
+| PECL uploadprogress | master                | Custom build   |
+| PECL YAML           | 2.0.0                 | Custom build   |
+| LibYAML             | 0.1.7                 | Custom build   |
+| Tideways Profiler   | 4.0.7                 | Custom build   |
+| Coder               | 8.2.9                 | Custom build   |
+| Code Sniffer        | 2.6.1                 | Custom build   |
+| PHP-CS-Fixer        | 1.12.2                | Custom build   |
+| phpmd               | 2.5.0                 | Custom build   |
+| phantomjs           | 2.1.1                 | Custom build   |
+| MySQL               | 5.7.14 or later       | Custom build   |
+| Drupal              | 8.3.x                 | Custom build   |
+| Drush               | 8.1.7                 | Custom build   |
+| Drupal Console      | 1.0.0-rc10            | Custom build   |
+| Composer            | 1.2.2                 | Custom build   |
+| phpMyAdmin          | 4.6.5                 | Custom build   |
+| adminer             | 4.2.5                 | Custom build   |
+| bash-git-prompt     | 2.6.1                 | Custom build   |
 
 ## Installation
 

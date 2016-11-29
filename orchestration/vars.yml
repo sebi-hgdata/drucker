@@ -65,6 +65,7 @@ sites_available: "{{ apache2_dir }}/sites-available"
 sites_enabled: "{{ apache2_dir }}/sites-enabled"
 mods_available: "{{ apache2_dir }}/mods-available"
 mods_enabled: "{{ apache2_dir }}/mods-enabled"
+apache_shared_modules: /usr/lib/apache2/modules
 conf_available: "{{ apache2_dir }}/conf-available"
 apache_security_conf: "{{ conf_available }}/security.conf"
 apache_envvars: "{{ apache2_dir }}/envvars"
@@ -97,6 +98,16 @@ php_deb: deb http://packages.dotdeb.org {{ codename }} all
 php_deb_src: deb-src http://packages.dotdeb.org {{ codename }} all
 dotdeb_gpg: https://www.dotdeb.org/dotdeb.gpg
 apcu_stable_release: 5.1.7
+
+# phpbrew
+phpbrew_root: "{{ home }}/.phpbrew"
+phpbrew_release: master
+phpbrew_download_link: https://github.com/phpbrew/phpbrew/raw/{{ phpbrew_release }}/phpbrew
+phpbrew_binary: /usr/bin/phpbrew
+#phpbrew_php_edge_release: 7.1
+phpbrew_php_current_stable_release: 7.0.13
+#phpbrew_php_legacy_version: 5.6.28
+phpbrew_php_build_arguments: +default +fpm +apxs2
 
 # php.ini
 php_ini: /etc/php/7.0/fpm/php.ini

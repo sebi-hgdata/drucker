@@ -12,6 +12,7 @@
   with_items:
     - apache2
     - apache2-utils
+    - apache2-dev
   when: apache.stat.exists == false
 
 - name: Enable required Apache modules
